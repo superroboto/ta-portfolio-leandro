@@ -1,0 +1,849 @@
+:root {
+    --primary-background: #101014;
+    --header-background: #1b1b22;
+    /* --primary-color: #f01313; */
+    --primary-color: #13f05b;
+    --button-color: #1b5a2f;
+    --button-color-hover: #2c8849;
+    --icon-color: #bbbbbb;
+    --tag-pill-color: #333333;
+    --text-h1-color: white;
+    --text-h2-color: white;
+    --text-normal-color: #bbbbbb;
+    --text-title-color: white;
+    --text-link-color: #29aaff;
+    --divider-line-color: #bbbbbb;
+    --Title-padding: 10px;
+    --padding-page-top: 95px;
+
+}
+
+/* Fix for chrome trying to force light mode and making the website unreadable */
+html {
+    color-scheme: dark; /* Explicitly tells browsers this is a dark-themed website */
+    background-color: var(--primary-background); /* Ensure your specific background color is explicitly set here too */
+}
+
+/* Increase margins on text
+.p {
+    margin-bottom: 1.5rem;
+}
+*/
+
+/* work-sans-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/work-sans-v24-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* work-sans-italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Work Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/work-sans-v24-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* work-sans-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/work-sans-v24-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* work-sans-600italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Work Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: url('../fonts/work-sans-v24-latin-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* work-sans-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/work-sans-v24-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* work-sans-700italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Work Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../fonts/work-sans-v24-latin-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+body {
+    /* margin-top: 60px; */
+
+    padding-top: var(--padding-page-top);
+
+/* new */
+background-color: var(--primary-background);
+
+color: var(--text-normal-color);
+
+    font-family: "Work Sans", sans-serif;
+
+
+}
+
+.standard-page-container {
+    width: 100%;
+    max-width: 1100px;  
+    margin: 0 auto;    
+    padding: 0 20px;   
+    box-sizing: border-box;
+    margin-top:80px;
+}
+
+/* The hidden overlay background */
+.lightbox-modal {
+    display: none; 
+    position: fixed;
+    z-index: 9999; /* Keeps it on top of your navbar */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.95); /* Deep dark background */
+    cursor: zoom-out;
+}
+
+/* The project fullscreen image */
+.lightbox-content {
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* This controls the relative padding when an image is fullscreen */
+    max-width: 97%;
+    max-height: 97%;
+    object-fit: contain;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6); /* darken background */
+    border-radius: 20px;
+}
+
+/* Close button (deprecated) */
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.lightbox-close:hover {
+    color: #ff4a4a; 
+}
+
+/* change cursor so people know its clickable */
+.project-container img {
+    cursor: zoom-in;
+    transition: transform 0.2s ease, opacity 0.2s ease; 
+}
+
+.project-container img:hover {
+    transform: scale(1.06); /* Scale image up on hover */
+    opacity: 1;             /* Optionally dim image */
+}
+
+/* Divider line styling */
+.page-divider {
+    border-top: 2px solid var(--divider-line-color); /* Optional: divider line */  
+    /* 
+    border: 0;
+    */
+/*
+    width: 100%;                                    
+    max-width: 900px;                    
+
+    margin-left: auto;                               
+    margin-right: auto;
+    */
+
+    
+    width: 70vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -35vw;
+  margin-right: -35vw;
+  /*
+width: 100%; 
+margin-left: 0px;                               
+margin-right: 0px;
+*/
+}
+
+/* Style the project grid section heading */
+.all-projects-section h2 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* project grid container */
+.related-grid {
+    display: flex;
+    gap: 24px;
+}
+
+.text-link {
+  color: var(--text-link-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.text-link:hover {
+  color: white;           
+  text-decoration: underline; 
+}
+
+
+.project-title-text {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.navbar {
+
+    background-color: var(--header-background);
+
+}
+
+.btn-icon {
+    fill: var(--icon-color);
+    transition: fill 0.3s ease;
+}
+
+.btn-icon:hover {
+    fill: var(--primary-color); 
+}
+
+.carousel-caption {
+    color: var(--text-normal-color);
+
+    /* fixes weird top padding*/
+    top: 0px;
+}
+
+/* make the project list at the bottom of home page background invisible */
+.list-group-item {
+
+    background-color: transparent;
+
+}
+
+.carousel-item {
+/* WAS ORIGINALLY 500px*/
+    height: 530px;
+}
+
+.carousel-inner {
+/* new */
+background-color: var(--primary-background);
+}
+
+.carousel-image {
+
+    float: left;
+
+    margin-right: 40px;
+
+    /* Instead we now set the width, when on desktop
+    height: 400px; */
+
+    /* Was previously 20px radius and 5px border */
+    border-radius: 10px;
+
+    border: 0px solid white;
+
+}
+
+
+
+.list-group-item img {
+
+    height: 125px;
+
+    border-radius: 10px;
+}
+
+.list-group {
+display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 5px;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  justify-items: center;
+}
+/* This is the outline for the list of all projects at the bottom of the page
+.list-group-item img:hover {
+
+    border: 5px solid var(--primary-color); 
+
+} 
+*/
+
+
+.thumblink {
+    color: var(--text-normal-color);
+    text-decoration: none;
+
+}
+
+
+
+
+
+/*
+.thumblink:hover {
+
+    text-decoration: underline;
+
+    text-decoration-color: var(--primary-color);
+
+    text-decoration-thickness: 2px;
+
+}
+    */
+.list-group-item:hover {
+    transform: translateY(-4px); /* Slight lift effect */
+}
+.list-group-item:hover .thumblink {
+    text-decoration: underline;
+
+    text-decoration-color: var(--primary-color);
+
+    text-decoration-thickness: 2px;
+}
+
+.list-group-item {
+
+    width: 240px;
+
+    border: 0px;
+
+}
+
+.reason{
+
+    display: none;
+
+}
+
+.thumbnail
+
+{
+
+    display: inline;
+
+    width: 150px;
+
+}
+
+.td-thumbnail{
+/* previously 150px */
+width:1px;
+padding: 0px;
+
+text-align:center;
+
+}
+
+.td-thumbnail img {
+
+
+/* Was previously 10px radius and 5px border */
+    border-radius: 7px;
+
+    border: 0px solid white;
+
+    box-shadow: 5px 8px 10px rgb(0, 0, 0, 1);
+
+    height: 250px;
+
+}
+
+.production {
+    margin-bottom: 60px;
+}
+
+
+.metadata
+
+{
+
+    display: inline;
+
+    width: 200px;
+
+}
+
+
+
+.key
+
+{
+
+    width:100px;
+
+    display: inline-block;
+
+    font-weight: bold;
+
+    text-align: right;
+
+    padding-right: 10px;
+
+}
+
+.key::after
+
+{
+
+    content:":";
+
+}
+
+.mb-2 {
+
+    margin-bottom: .5rem !important;
+
+    margin-left: 5%;
+
+    margin-right: 5%;
+
+    margin-top: 30px;
+
+}
+
+/* necessary to give position: relative to parent. */
+
+input[type="text"].effect-1,input[type="email"].effect-1,textarea.effect-1 {
+
+    border: 0;
+
+    padding: 8px;
+
+    border: 1px solid darkgray;
+
+    margin: 10px 0px;
+/*
+    border-bottom-color: #ccc;
+*/
+    transition: 0.2s;
+
+    display: block;
+
+    width: 100%;
+
+    background-color: var(--header-background);
+
+    color: var(--text-title-color);
+
+    opacity: 1;
+
+}
+.effect-1::placeholder {   
+    color: var(--text-title-color);  
+  opacity: 0.7;         /* Controls the opacity (0.0 to 1.0) */
+}
+/*
+input[type="text"].effect-1:focus,input[type="email"].effect-1:focus,textarea.effect-1:focus {
+
+    border-width: 0 0 4px;
+
+    border-color: var(--primary-color);
+
+}
+*/
+
+
+
+
+
+
+.image-container-blog{
+
+height: 250px;
+
+width: 200px;
+
+}
+
+.icon-link{
+
+    color: var(--primary-color);
+
+    text-decoration-color: var(--primary-color);
+/*
+    color: #28d25f;
+
+    text-decoration-color: #28d25f;
+*/
+    font-weight: bold;
+
+}
+/*
+This was causing the misalignment of the image on the carousel
+.container img {
+
+  margin-top: 20px;
+
+}
+  */
+
+
+
+table
+
+{
+
+    border: 1px solid;
+
+    border-color: var(--primary-background);
+    /* border-color: #ccc; */
+
+    width: 100%;
+
+    margin-bottom: 30px;
+    
+    background-color: var(--primary-background);
+    /* background-color: #ccc; */
+
+    
+
+}
+
+td {
+
+    padding: 30px;
+
+}
+/*
+.thumblink {
+
+    color: var(--text-normal-color);
+
+
+    text-decoration: none;
+
+}
+*/
+
+
+
+
+
+/*
+.thumblink:hover {
+
+    text-decoration: underline;
+
+    text-decoration-color: var(--primary-color);
+
+    text-decoration-thickness: 2px;
+
+}
+*/
+
+
+hr {
+
+    margin-right: 10%;
+
+    margin-left: 10%;
+
+    margin-top: 30px;
+
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    /* font-weight: bold; */
+}
+
+.nav-link:hover{
+
+    text-decoration: underline;
+
+    text-decoration-color: var(--primary-color);
+    /* text-decoration-color: #28d25f; */
+
+    text-decoration-thickness: 4px;
+
+}
+
+h1 {
+
+    color: var(--text-h1-color);
+
+    text-transform: uppercase;
+
+}
+
+h2 {
+
+    color: var(--text-h2-color);
+    /* color: #ada9a9; */
+
+    /*
+    text-decoration: underline;
+
+    text-decoration-color: var(--primary-color);
+    */
+    /* text-decoration-color: #adf5c4; */
+
+    text-decoration-thickness: 4px;
+
+    padding-bottom: 5px;
+
+    text-transform: uppercase;
+
+    margin-top: 30px;
+/*
+    letter-spacing: 3px;
+*/
+}
+
+.project-container h2, .standard-header {
+    color: var(--text-h2-color);
+    margin-top: 3.5rem; 
+    margin-bottom: 1rem; 
+    position: relative;
+    padding-bottom: 8px;
+    
+font-weight: bold;
+
+}
+
+/* Project header underline */
+.project-container h2::after,.standard-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color); 
+}
+
+.tag-pill {
+--bs-badge-padding-x: 0.7rem;
+  --bs-badge-padding-y: 0.4rem;
+  --bs-badge-font-size: 1rem;
+  --bs-badge-border-radius: 0.375rem;
+  display: inline-block;
+    /* CONTROLS BACKGROUND PADDING */
+  padding: 0.6rem 0.9rem;
+  font-size: var(--bs-badge-font-size);
+  font-weight: normal;
+  line-height: 1;
+  color: var(--text-title-color);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  /* CONTROLS ROUNDING (Should be 2 times the largest padding value)*/
+  border-radius: 1.2rem;
+
+  /*
+  background-color: var(--tag-pill-color) !important;
+*/
+  border: 2px solid var(--tag-pill-color);
+  margin: 0.4rem 0px;
+}
+
+.btn-primary {
+
+    --bs-btn-bg: var(--primary-background);
+
+--bs-btn-bg-color: var(--primary-background);
+
+ --bs-btn-hover-bg: var(--button-color-hover);
+
+ --bs-btn-hover-border-color: var(--button-color-hover);
+
+ --bs-btn-border-color: var(--button-color);
+ border: 2px solid var(--primary-color);
+ border-radius: 1rem;
+ padding: 0.4rem 1rem;
+    /*
+--bs-btn-bg: var(--button-color);
+
+--bs-btn-bg-color: var(--button-color);
+
+ --bs-btn-hover-bg: var(--button-color-hover);
+
+ --bs-btn-hover-border-color: var(--button-color-hover);
+
+ --bs-btn-border-color: var(--button-color);
+ border: 2px;
+ */
+
+/*
+        --bs-btn-bg: #28d25f;
+
+            --bs-btn-bg-color: #28d25f;
+
+         --bs-btn-hover-bg:   #4CAF50;
+
+         --bs-btn-hover-border-color: #4CAF50;
+
+         --bs-btn-border-color: #28d25f;
+*/
+
+}
+
+#name{
+/* My name */
+padding-left: var(--Title-padding);
+
+    margin-bottom: 0rem;
+
+    margin-right: 50px;
+
+    font-size: 120%;
+
+    font-weight: bolder;
+
+    text-transform: uppercase;
+
+    color: var(--text-title-color); 
+    transition: color 0.2s ease;
+
+}
+
+.navbar-brand:hover #name {
+    color: var(--primary-color); 
+}
+
+#nametitle {
+    /* My role / expertise */
+padding-left: var(--Title-padding);
+
+    margin-bottom: 0rem;
+
+    color: var(--primary-color);
+    /* color: #28d25f; */
+
+    font-size: 18px;
+
+}
+
+.stitle {
+color: var(--primary-color);
+
+    /* font-weight: bold; */
+
+    font-size: 1.2rem;
+    margin-bottom: 2rem
+
+}
+
+.s2title {
+
+    font-style: italic;
+
+}
+
+.proficiency {
+
+    font-size: 1rem;
+color: var(--text-title-color);
+
+    width: 49%;
+
+    display: inline-block;
+
+    /* background-color: var(--primary-background); */
+    /* background-color: #ccc; */
+
+    margin-bottom: 10px;
+
+    vertical-align: middle;
+
+    /*previously 15px */
+    padding: 15px;
+
+    
+
+
+
+}
+
+.submenu a
+{
+    color: black;
+}
+
+.submenu a:hover
+{
+    text-decoration: underline;
+
+    color: black;
+
+    text-decoration-color: var(--primary-color);
+    /* text-decoration-color: #28d25f; */
+}
+
+.iconholder img {
+
+    height: 30px;
+
+    margin-right: 10px;   
+
+}
+
+.iconholderfooter img {
+
+    height: 20px;
+
+    margin-right: 10px;   
+
+}
+
+.proficiency img {
+
+    width: 40px;
+
+    height: 40px;
+
+    margin-right: 10px;
+
+}
+
+/* Center the navbar */
+@media (min-width: 768px) {
+    .desktop-center {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin-bottom: 0 !important;
+    }
+
+    .carousel-image {
+        width: 50%;
+    }
+}

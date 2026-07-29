@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <!-- DISABLE PAGE CACHING
+    <meta http-equiv="Cache-Control" content="no-cache">
+-->
+
+  <!-- MOBILE SUPPORT -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Bootstrap CSS -->
+   <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" >
+   
+<!-- Custom CSS -->
+  <link type="text/css" href="css/leandro.css" rel="stylesheet" >
+
+  <!-- Mobile CSS -->
+  <link type="text/css" href="css/mobile.css" rel="stylesheet" media="screen and (max-width: 768px)" >
+
+	<!-- Bootstrap JS  -->
+	<script  language="javascript" type="text/javascript"  src="js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+<body>
+	<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+
+        <div class="container-fluid position-relative">
+				<a class="navbar-brand" href="/">
+				
+					<p id="name">Leandro Laenen</p>
+					<p id="nametitle">Unreal Engine Technical Artist</p>
+
+				</a>
+				<button class="navbar-toggler" type="button" id="navbar-toggle-button">
+					<span class="navbar-toggler-icon">
+				</button>
+				<div class="collapse navbar-collapse" id="mobile-navbar-collapse">
+
+            <ul class="navbar-nav desktop-center">
+				
+							<li class='nav-item'><a class='nav-link ' aria-current='page' href='index'>Projects</a></li><li class='nav-item'><a class='nav-link ' aria-current='page' href='resume'>Resume</a></li><li class='nav-item'><a class='nav-link ' aria-current='page' href='contact'>Contact</a></li>
+					</ul>
+
+					</div>
+				</div>
+			</nav>
+	</header>
+<main><main class="standard-page-container project-container" style="margin-top: 20px;">
+
+   <h1 class="project-title-text"><b>The Shadow-Driven Opacity Paradox</b></h1>
+
+    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/shadowmask_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
+Making a character invisible in the shadows sounds like a relatively simple material effect. However, from a rendering pipeline perspective, this presents a fundamental logical paradox. 
+</p>
+<p>
+<b>You cannot sample a shadow on a surface that doesn't know whether it should exist yet.</b>
+</p>
+
+<h2>Why standard shading fails</h2>
+<p>
+In a standard deferred rendering pipeline, material properties (like opacity masking) are evaluated before lighting and shadows. This creates a circular dependency:
+<ul>
+<li>To know if the monster should be invisible, the shader needs to sample the shadow data at that exact pixel.</li>
+
+<li>But if the monster is invisible, its geometry is culled and never rendered to the G-Buffer.</li>
+
+<li>Because it isn't rendered, it cannot execute standard surface shading or sample light/shadow data at that location.</li>
+</ul>
+
+<h2>Render order</h2>
+<p>Geometry → <b>LOCALIZED SHADOW DATA</b> → Material/Opacity Mask → Lighting & Shadows.</p>
+<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/shadowmask_features.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<p>
+<h2>The Solution</h2>
+To bypass this limitation without killing performance, I decoupled the character’s visibility from the main shadow pass using a <b>localized, lightweight depth-testing system.</b>
+</p>
+
+<p>
+For every light source hitting the character, the system generates a 64x64 depth render target from the light’s perspective. Because this RT is dynamically zoomed in and tightly focused <i>only</i> on the character’s bounding volume, a tiny 64x64 texture provides great texel density, resulting in sharp shadow masks at a cost that is virtually negligible.
+</p>
+
+<h2>Visualizing Light Bounds & Depth Capture</h2>
+<p>
+Below is the visualization of the real-time depth buffer capture, used to compute the visibility mask. Alongside the active light frustums tracking the character, used to compute the visibility mask.
+</p>
+<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/shadowmask_depthbuffer.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/shadowmask_lightbounds.webp'></p>
+<h2>Material Graph Architecture</h2>
+<p>The logic is split across two core functions within the material pipeline to handle coordinate projection, depth evaluation, and custom multi-sample blurring.</p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/shadowmask_material_1.webp'></p><p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/shadowmask_material_2.webp'></p><h2>Performance</h2>
+<p>Because depth is only captured from the perspective of light sources currently interacting with the character's bounding volume, runtime overhead remains exceptionally low.</p>
+<ul>
+<li>Shadow Cost: ~0.024ms per active light source.</li>
+
+<li>Scalability: Capped at 10 overlapping light sources simultaneously.</li>
+
+<li>Resolution: Completely independent of screen resolution.</li>
+</ul>
+
+<p>Tested on a mid-range Radeon RX 5700.</p></main>
+
+
+</section>
+  <div style="text-align:center">
+        <hr class="page-divider" style="margin-top: 5rem; margin-bottom: 3rem">
+           <section class="all-projects-section">
+    <h2>All Projects</h2>
+<ul class="list-group">
+
+      <li class="list-group-item">
+   <a class="thumblink" href="shadowmasking">
+   <img  src="testlink.com/shadowmask_thumb.webp">
+   The Shadow-Driven Opacity Paradox</a>
+   </li>
+      <li class="list-group-item">
+   <a class="thumblink" href="sinkhole">
+   <img  src="testlink.com/sinkhole_thumb.webp">
+   Flat-Surface 3D Sinkhole with Character & Physics Simulation</a>
+   </li>
+      <li class="list-group-item">
+   <a class="thumblink" href="islandpipeline">
+   <img  src="testlink.com/islandpipeline_thumb.webp">
+   Nordic Island Creation Pipeline</a>
+   </li>
+      <li class="list-group-item">
+   <a class="thumblink" href="globalillumination">
+   <img  src="testlink.com/globalillumination_thumb.webp">
+   Ultra-Lightweight Dynamic Global Illumination (0.2ms)</a>
+   </li>
+      <li class="list-group-item">
+   <a class="thumblink" href="niagaraswarms">
+   <img  src="testlink.com/niagaraanimals_thumb.webp">
+   100K GPU Frogs: High-Performance Niagara Ambient Swarms</a>
+   </li>
+       </ul>
+</div>
+
+<div id="lightbox" class="lightbox-modal">
+
+    <!-- Optional close button (removed since you can click anywhere) -->
+<!-- <span class="lightbox-close">&times;</span> -->
+
+    <img class="lightbox-content" id="lightbox-img" alt="Fullscreen view">
+</div>
+
+	
+    <hr class="page-divider" style="margin-top: 3rem; margin-bottom: 3rem">
+    <div class="container footer"> 
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4"> 
+
+<div class="col-md-4 d-flex align-items-center"> 
+  
+<span class="mb-3 mb-md-0">© 2026 Leandro Laenen</span> </div>
+
+ <p class="iconholderfooter">
+
+    <a href="mailto:leandro@gradientgames.net" style="text-decoration: none; padding-right: 5px; padding-left: 5px;" target="_blank" rel="noopener noreferrer">
+  
+<svg class="btn-icon" viewBox="0 0 96 96" width="24" height="24">
+      <path d="M90,12H6a5.9966,5.9966,0,0,0-6,6V78a5.9966,5.9966,0,0,0,6,6H90a5.9966,5.9966,0,0,0,6-6V18A5.9966,5.9966,0,0,0,90,12ZM84,24v2.5188L48,47.0918,12,26.5188V24ZM12,72V40.3381L45.0234,59.209a5.9961,5.9961,0,0,0,5.9532,0L84,40.3381V72Z"/>
+       
+  </svg> 
+</a> 
+<a href="https://www.artstation.com/leandrolaenen" style="text-decoration: none; padding-right: 5px; padding-left: 5px;" target="_blank" rel="noopener noreferrer">
+  
+<svg class="btn-icon" viewBox="0 0 24 24" width="24" height="24">
+      <path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 0 0-2.142-1.289H9.419L21.598 22.54l1.92-3.325c.378-.637.482-.919.482-1.467zm-11.129-3.462L7.428 4.858l-5.444 9.428h10.887z"/>
+       
+  </svg> 
+</a> 
+<a href="https://www.linkedin.com/in/leandro-laenen" style="text-decoration: none; padding-right: 5px; padding-left: 5px;" target="_blank" rel="noopener noreferrer">
+  
+<svg class="btn-icon" viewBox="0 0 32 32" width="24" height="24">
+      <path d="M28.778 1.004h-25.56c-0.008-0-0.017-0-0.027-0-1.199 0-2.172 0.964-2.186 2.159v25.672c0.014 1.196 0.987 2.161 2.186 2.161 0.010 0 0.019-0 0.029-0h25.555c0.008 0 0.018 0 0.028 0 1.2 0 2.175-0.963 2.194-2.159l0-0.002v-25.67c-0.019-1.197-0.994-2.161-2.195-2.161-0.010 0-0.019 0-0.029 0h0.001zM9.9 26.562h-4.454v-14.311h4.454zM7.674 10.293c-1.425 0-2.579-1.155-2.579-2.579s1.155-2.579 2.579-2.579c1.424 0 2.579 1.154 2.579 2.578v0c0 0.001 0 0.002 0 0.004 0 1.423-1.154 2.577-2.577 2.577-0.001 0-0.002 0-0.003 0h0zM26.556 26.562h-4.441v-6.959c0-1.66-0.034-3.795-2.314-3.795-2.316 0-2.669 1.806-2.669 3.673v7.082h-4.441v-14.311h4.266v1.951h0.058c0.828-1.395 2.326-2.315 4.039-2.315 0.061 0 0.121 0.001 0.181 0.003l-0.009-0c4.5 0 5.332 2.962 5.332 6.817v7.855z"></path>
+       
+  </svg> 
+</a> 
+
+ </footer> 
+
+ </div>
+ <script  src="/js/main.js"></script>
+    </main>
+
+		</body>
+
+	</html>
