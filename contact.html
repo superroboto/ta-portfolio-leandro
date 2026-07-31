@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
-	
+
     <!-- DISABLE PAGE CACHING -->
    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <!-- Backwards compatibility for HTTP 1.0 (older browsers) -->
@@ -45,7 +45,7 @@
 
             <ul class="navbar-nav desktop-center">
 				
-							<li class='nav-item'><a class='nav-link ' aria-current='page' href='index'>Projects</a></li><li class='nav-item'><a class='nav-link ' aria-current='page' href='resume'>Resume</a></li><li class='nav-item'><a class='nav-link active' aria-current='page' href='contact'>Contact</a></li>
+							<li class='nav-item'><a class='nav-link ' aria-current='page' href='/'>Projects</a></li><li class='nav-item'><a class='nav-link ' aria-current='page' href='resume'>Resume</a></li><li class='nav-item'><a class='nav-link active' aria-current='page' href='contact'>Contact</a></li>
 					</ul>
 
 					</div>
@@ -56,7 +56,7 @@
 
 
 <main style="max-width: 800px;" class="standard-page-container">
-<form action="contact.php" method="POST">
+<form action="https://formsubmit.co/leandro@gradientgames.net" method="POST">
 
       <h2 class="standard-header">Let's talk</h2>
 
@@ -64,8 +64,11 @@
             <input placeholder="Name" type="text" id="fullname" class="effect-1" name="fullname" required>
 
       <input placeholder="Email"  id="email" name="email" class="effect-1"  type="email" required>
+
       <input placeholder="Reason"  id="reason" name="reason" class="reason"  type="text" >
-      <textarea placeholder="Message"  id="message" name="message" class="effect-1"  rows="4" required></textarea>
+
+      <textarea placeholder="Message"  id="message" name="message" class="effect-1"  rows="5" required></textarea>
+
       <p style="padding:10px;text-align:center">
       <button class="btn btn-primary" type="submit">Send Message</button>
       </p>
