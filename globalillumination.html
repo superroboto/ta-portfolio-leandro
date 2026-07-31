@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
-    <!-- DISABLE PAGE CACHING
-    <meta http-equiv="Cache-Control" content="no-cache">
--->
+	
+    <!-- DISABLE PAGE CACHING -->
+   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <!-- Backwards compatibility for HTTP 1.0 (older browsers) -->
+  <meta http-equiv="Pragma" content="no-cache">
+  <!-- Sets expiration date to past, forcing a fresh download -->
+  <meta http-equiv="Expires" content="0">
+
 
   <!-- MOBILE SUPPORT -->
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,7 +56,7 @@
 
    <h1 class="project-title-text"><b>Ultra-Lightweight Dynamic Global Illumination (0.2ms)</b></h1>
 
-    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/globalillumination_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
+    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='https://media.leandrolaenen.com/globalillumination_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
 In games featuring dynamic lighting, baked lightmaps are not an option. However, dynamic global illumination is often one of the most expensive rendering features.
 </p>
 
@@ -71,18 +76,18 @@ To fix this, I modernized a classic lighting "cheat" using automated, invisible 
 
 <p><b>Lighting Channels for Actor Isolation:</b> A common issue with floating proxy lights is that moving characters get unrealistically illuminated when passing through them. I solved this by using Lighting Channels. The GI system illuminates the environment geometry while leaving players and enemies completely untouched.</p>
 
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/globalillumination_lightingfix.webp'></p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/globalillumination_lightingfix.webp'></p>
 <h2>Fully Dynamic</h2>
 
 <p>The system handles both ambient light source propagation (windows, doorways) and direct floor bounces with minimal setup, requiring only a single actor at each window.</p>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/globalillumination_timelapse.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='https://media.leandrolaenen.com/globalillumination_timelapse.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
 <p><b>Directional Floor Bounce Tracing:</b> Floor bounces are achieved by tracing from the window/doorway in the direction of the sun or moon vector, automatically shifting the bounce light to the impact point.</p>
 
 <p><b>Artistic Control:</b> For complete art direction, I created a system allowing you to manually tweak or override the trace paths.</p>
 
 <p><b>Flashlight Bounce:</b> A dedicated, localized proxy light is attached to the player's flashlight spotlight, simulating instantaneous bounce lighting as the beam sweeps across dark, tight spaces.</p>
 
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/globalillumination_viewport.webp'></p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/globalillumination_viewport.webp'></p>
 <h2>Why Not Lumen?</h2>
 
 <p>While UE5’s Lumen is incredible rendering tech, it was not used for this project due to performance constraints and artistic choices.</p>
@@ -104,27 +109,27 @@ To fix this, I modernized a classic lighting "cheat" using automated, invisible 
 
       <li class="list-group-item">
    <a class="thumblink" href="shadowmasking">
-   <img  src="testlink.com/shadowmask_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/shadowmask_thumb.webp">
    The Shadow-Driven Opacity Paradox</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="sinkhole">
-   <img  src="testlink.com/sinkhole_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/sinkhole_thumb.webp">
    Flat-Surface 3D Sinkhole with Character & Physics Simulation</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="islandpipeline">
-   <img  src="testlink.com/islandpipeline_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/islandpipeline_thumb.webp">
    Nordic Island Creation Pipeline</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="globalillumination">
-   <img  src="testlink.com/globalillumination_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/globalillumination_thumb.webp">
    Ultra-Lightweight Dynamic Global Illumination (0.2ms)</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="niagaraswarms">
-   <img  src="testlink.com/niagaraanimals_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/niagaraanimals_thumb.webp">
    100K GPU Frogs: High-Performance Niagara Ambient Swarms</a>
    </li>
        </ul>

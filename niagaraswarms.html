@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
-    <!-- DISABLE PAGE CACHING
-    <meta http-equiv="Cache-Control" content="no-cache">
--->
+	
+    <!-- DISABLE PAGE CACHING -->
+   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <!-- Backwards compatibility for HTTP 1.0 (older browsers) -->
+  <meta http-equiv="Pragma" content="no-cache">
+  <!-- Sets expiration date to past, forcing a fresh download -->
+  <meta http-equiv="Expires" content="0">
+
 
   <!-- MOBILE SUPPORT -->
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,7 +56,7 @@
 
    <h1 class="project-title-text"><b>100K GPU Frogs: High-Performance Niagara Ambient Swarms</b></h1>
 
-    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/niagaraanimals_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
+    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='https://media.leandrolaenen.com/niagaraanimals_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
 This project goes over how I made a highly optimized, scalable ambient wildlife system using GPU Niagara systems and material-driven WPO vertex animation. By shifting the animation from skeletal meshes to simple vertex shaders, the system handles massive entity counts at minimal cost.
 </p>
 
@@ -63,13 +68,13 @@ This project goes over how I made a highly optimized, scalable ambient wildlife 
 <p><b>Rats (GPU):</b> Programmed to scurry dynamically across surfaces using Global Distance Fields while avoiding the player. A custom module calculates angular velocity to procedurally twist the body along its path during tight turns.</p>
 
 <p><b>Fireflies (CPU):</b> Unlike the GPU swarms, the fireflies utilize a CPU system to support light components for environmental illumination (no shadows).</p>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/niagaraanimals_stress.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='https://media.leandrolaenen.com/niagaraanimals_stress.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
 <h2>Optimization & Custom LOD System</h2>
 <p>While originally created for low-density ambient life, I wanted to stress-test the scalability of these systems and address the performance bottlenecks associated with high instance counts (specifically mesh complexity).</p>
 
 <p>To achieve this, I built a per-instance Niagara Level of Detail system to swap instances dynamically based on camera distance.</p>
 
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/niagaraanimals_models.webp'></p><p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/niagaraanimals_lods.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/niagaraanimals_models.webp'></p><p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='https://media.leandrolaenen.com/niagaraanimals_lods.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
 <h2>Performance Metrics</h2>
 <p>Tested on a mid-range Radeon RX 5700 at 1080p</p>
 
@@ -79,7 +84,7 @@ This project goes over how I made a highly optimized, scalable ambient wildlife 
 
 <p><b>Stress Test Extreme (100,000 Frogs with LODs):</b> 4.2ms frame time, proving extreme scalability on mid-range hardware. Performance would be even better if the frogs were less densely contained within a small area.</p>
 
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/niagaraanimals_emitters.webp'></p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/niagaraanimals_emitters.webp'></p>
 <h2>Future optimization</h2>
 <p>If the goal was actually massive 10k+ swarms, future iterations of this system would focus on</p>
 
@@ -102,27 +107,27 @@ This project goes over how I made a highly optimized, scalable ambient wildlife 
 
       <li class="list-group-item">
    <a class="thumblink" href="shadowmasking">
-   <img  src="testlink.com/shadowmask_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/shadowmask_thumb.webp">
    The Shadow-Driven Opacity Paradox</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="sinkhole">
-   <img  src="testlink.com/sinkhole_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/sinkhole_thumb.webp">
    Flat-Surface 3D Sinkhole with Character & Physics Simulation</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="islandpipeline">
-   <img  src="testlink.com/islandpipeline_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/islandpipeline_thumb.webp">
    Nordic Island Creation Pipeline</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="globalillumination">
-   <img  src="testlink.com/globalillumination_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/globalillumination_thumb.webp">
    Ultra-Lightweight Dynamic Global Illumination (0.2ms)</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="niagaraswarms">
-   <img  src="testlink.com/niagaraanimals_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/niagaraanimals_thumb.webp">
    100K GPU Frogs: High-Performance Niagara Ambient Swarms</a>
    </li>
        </ul>

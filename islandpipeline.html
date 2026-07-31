@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
-    <!-- DISABLE PAGE CACHING
-    <meta http-equiv="Cache-Control" content="no-cache">
--->
+	
+    <!-- DISABLE PAGE CACHING -->
+   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <!-- Backwards compatibility for HTTP 1.0 (older browsers) -->
+  <meta http-equiv="Pragma" content="no-cache">
+  <!-- Sets expiration date to past, forcing a fresh download -->
+  <meta http-equiv="Expires" content="0">
+
 
   <!-- MOBILE SUPPORT -->
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,7 +56,7 @@
 
    <h1 class="project-title-text"><b>Nordic Island Creation Pipeline</b></h1>
 
-    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/islandpipeline_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
+    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='https://media.leandrolaenen.com/islandpipeline_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
 Using my custom Nordic island creation pipeline, I was able to create, texture, and populate this entire island environment in just 1 hour (excluding prop placement).
 </p>
 <p></p>
@@ -60,13 +65,13 @@ I was also responsible for all lighting, the dynamic ocean system, and color gra
 </p>
 
 <h2>1. Island Mesh Creation</h2>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/islandpipeline_timelapse.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center;margin-top:-20px;'><i>Island creation timelapse</i></p><p>The pipeline starts with a low-fidelity, rapid base sculpt. A custom Blender Geometry Nodes modifier, <b>ConvertToIsland</b>, then handles the heavy lifting, procedurally generating high-frequency rock details, fracture lines, sediment layers, and macro ground variation.</p>
+<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='https://media.leandrolaenen.com/islandpipeline_timelapse.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center;margin-top:-20px;'><i>Island creation timelapse</i></p><p>The pipeline starts with a low-fidelity, rapid base sculpt. A custom Blender Geometry Nodes modifier, <b>ConvertToIsland</b>, then handles the heavy lifting, procedurally generating high-frequency rock details, fracture lines, sediment layers, and macro ground variation.</p>
 <ul>
 <li>One Mesh: By generating the island as a single mesh rather than kitbashing separate rock assets, geological layer lines remain perfectly seamless across the island.</li>
 
 <li>Scalability: Built with Nanite in mind, though the setup can be baked down and split for traditional LOD systems.</li>
 </ul>
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/islandpipeline_geometrynodes.webp'></p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/islandpipeline_geometrynodes.webp'></p>
 <h2>2. Island Auto-Material</h2>
 
 <p>Once imported into Unreal, a procedural material automatically handles complex texturing, using vertex painting to define grassy areas.</p>
@@ -75,7 +80,7 @@ I was also responsible for all lighting, the dynamic ocean system, and color gra
 
 <li>The material samples a Runtime Virtual Texture (RVT) for dynamic path masking.</li>
 </ul>
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/islandpipeline_material.webp'></p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/islandpipeline_material.webp'></p>
 <h2>3. PCG and Splines</h2>
 
 <p>Foliage and secondary detail rocks are procedurally populated using PCG graphs driven by simple splines, maximizing runtime performance by spawning smaller assets directly on the GPU.</p>
@@ -88,7 +93,7 @@ I was also responsible for all lighting, the dynamic ocean system, and color gra
 
 <li>Shore Rocks Spline: Spawns appropriate rock types along the island's shore.</li>
 </ul>
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/islandpipeline_pcg.webp'></p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/islandpipeline_pcg.webp'></p>
 <h2>4. Final Set Dressing</h2>
 
 <p>With the foundational landscape and ecological systems automated, I am free to focus entirely on high-level composition, set dressing, and prop placement.</p>
@@ -105,27 +110,27 @@ I was also responsible for all lighting, the dynamic ocean system, and color gra
 
       <li class="list-group-item">
    <a class="thumblink" href="shadowmasking">
-   <img  src="testlink.com/shadowmask_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/shadowmask_thumb.webp">
    The Shadow-Driven Opacity Paradox</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="sinkhole">
-   <img  src="testlink.com/sinkhole_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/sinkhole_thumb.webp">
    Flat-Surface 3D Sinkhole with Character & Physics Simulation</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="islandpipeline">
-   <img  src="testlink.com/islandpipeline_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/islandpipeline_thumb.webp">
    Nordic Island Creation Pipeline</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="globalillumination">
-   <img  src="testlink.com/globalillumination_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/globalillumination_thumb.webp">
    Ultra-Lightweight Dynamic Global Illumination (0.2ms)</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="niagaraswarms">
-   <img  src="testlink.com/niagaraanimals_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/niagaraanimals_thumb.webp">
    100K GPU Frogs: High-Performance Niagara Ambient Swarms</a>
    </li>
        </ul>

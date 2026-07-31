@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
-    <!-- DISABLE PAGE CACHING
-    <meta http-equiv="Cache-Control" content="no-cache">
--->
+	
+    <!-- DISABLE PAGE CACHING -->
+   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <!-- Backwards compatibility for HTTP 1.0 (older browsers) -->
+  <meta http-equiv="Pragma" content="no-cache">
+  <!-- Sets expiration date to past, forcing a fresh download -->
+  <meta http-equiv="Expires" content="0">
+
 
   <!-- MOBILE SUPPORT -->
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,7 +56,7 @@
 
    <h1 class="project-title-text"><b>The Shadow-Driven Opacity Paradox</b></h1>
 
-    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/shadowmask_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
+    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='https://media.leandrolaenen.com/shadowmask_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
 Making a character invisible in the shadows sounds like a relatively simple material effect. However, from a rendering pipeline perspective, this presents a fundamental logical paradox. 
 </p>
 <p>
@@ -71,7 +76,7 @@ In a standard deferred rendering pipeline, material properties (like opacity mas
 
 <h2>Render order</h2>
 <p>Geometry → <b>LOCALIZED SHADOW DATA</b> → Material/Opacity Mask → Lighting & Shadows.</p>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/shadowmask_features.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='https://media.leandrolaenen.com/shadowmask_features.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
 <p>
 <h2>The Solution</h2>
 To bypass this limitation without killing performance, I decoupled the character’s visibility from the main shadow pass using a <b>localized, lightweight depth-testing system.</b>
@@ -85,10 +90,10 @@ For every light source hitting the character, the system generates a 64x64 depth
 <p>
 Below is the visualization of the real-time depth buffer capture, used to compute the visibility mask. Alongside the active light frustums tracking the character, used to compute the visibility mask.
 </p>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/shadowmask_depthbuffer.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/shadowmask_lightbounds.webp'></p>
+<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='https://media.leandrolaenen.com/shadowmask_depthbuffer.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/shadowmask_lightbounds.webp'></p>
 <h2>Material Graph Architecture</h2>
 <p>The logic is split across two core functions within the material pipeline to handle coordinate projection, depth evaluation, and custom multi-sample blurring.</p>
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/shadowmask_material_1.webp'></p><p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/shadowmask_material_2.webp'></p><h2>Performance</h2>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/shadowmask_material_1.webp'></p><p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/shadowmask_material_2.webp'></p><h2>Performance</h2>
 <p>Because depth is only captured from the perspective of light sources currently interacting with the character's bounding volume, runtime overhead remains exceptionally low.</p>
 <ul>
 <li>Shadow Cost: ~0.024ms per active light source.</li>
@@ -110,27 +115,27 @@ Below is the visualization of the real-time depth buffer capture, used to comput
 
       <li class="list-group-item">
    <a class="thumblink" href="shadowmasking">
-   <img  src="testlink.com/shadowmask_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/shadowmask_thumb.webp">
    The Shadow-Driven Opacity Paradox</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="sinkhole">
-   <img  src="testlink.com/sinkhole_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/sinkhole_thumb.webp">
    Flat-Surface 3D Sinkhole with Character & Physics Simulation</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="islandpipeline">
-   <img  src="testlink.com/islandpipeline_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/islandpipeline_thumb.webp">
    Nordic Island Creation Pipeline</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="globalillumination">
-   <img  src="testlink.com/globalillumination_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/globalillumination_thumb.webp">
    Ultra-Lightweight Dynamic Global Illumination (0.2ms)</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="niagaraswarms">
-   <img  src="testlink.com/niagaraanimals_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/niagaraanimals_thumb.webp">
    100K GPU Frogs: High-Performance Niagara Ambient Swarms</a>
    </li>
        </ul>

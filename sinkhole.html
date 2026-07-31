@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
-    <!-- DISABLE PAGE CACHING
-    <meta http-equiv="Cache-Control" content="no-cache">
--->
+	
+    <!-- DISABLE PAGE CACHING -->
+   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <!-- Backwards compatibility for HTTP 1.0 (older browsers) -->
+  <meta http-equiv="Pragma" content="no-cache">
+  <!-- Sets expiration date to past, forcing a fresh download -->
+  <meta http-equiv="Expires" content="0">
+
 
   <!-- MOBILE SUPPORT -->
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,7 +56,7 @@
 
    <h1 class="project-title-text"><b>Flat-Surface 3D Sinkhole with Character & Physics Simulation</b></h1>
 
-    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/sinkhole_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
+    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='https://media.leandrolaenen.com/sinkhole_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
 A dynamic 3D sinkhole rendered as a completely flat 2D plane, featuring rigid-body simulation for fracturing and ragdoll physics. 
 </p>
 
@@ -62,7 +67,7 @@ The system utilizes a true 3D mesh. To keep performance cost extremely cheap, no
 <h2>Breaking the illusion</h2>
 
 <p>The video below demonstrates how the sinkhole and everything in it is rendered as if it were a completely flat plane.</p>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='testlink.com/sinkhole_2d.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay><source src='https://media.leandrolaenen.com/sinkhole_2d.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
 <h2>Designed to Work Anywhere</h2>
 <p>
 A primary engineering goal was ensuring this system could be dynamically deployed in any game environment without requiring destructive workflow modifications.
@@ -80,17 +85,17 @@ A primary engineering goal was ensuring this system could be dynamically deploye
 
 <h2>2. Setting Up the Cover Mesh</h2>
 <p>This captured environment texture is projected onto a pre-fractured "ground" surface cover mesh. This creates a flawless visual match with the surrounding world materials right before the collapse sequence triggers.</p>
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/sinkhole_fracturedmesh.webp'></p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/sinkhole_fracturedmesh.webp'></p>
 <h2>3. Progression of the Fracture</h2>
 <p>When triggered, the pre-fractured cover mesh collapses, a niagara system creates small falling debris and a separate collision channel is used on the characters, allowing players to dynamically fall into this "fake" hole.</p>
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/sinkhole_fractureprogression.webp'></p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/sinkhole_fractureprogression.webp'></p>
 <h2>Material Functions & Viewmodes</h2>
 
 <p>The entire system is built around a tightly managed set of material functions mapping masks, vertex translations, and texture captures seamlessly together.</p>
 
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/sinkhole_materialfunctions.webp'></p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/sinkhole_materialfunctions.webp'></p>
 <p>Below you can see the system in different viewmodes.</p>
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='testlink.com/sinkhole_viewmodes.webp'></p></main>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/sinkhole_viewmodes.webp'></p></main>
 
 
 </section>
@@ -102,27 +107,27 @@ A primary engineering goal was ensuring this system could be dynamically deploye
 
       <li class="list-group-item">
    <a class="thumblink" href="shadowmasking">
-   <img  src="testlink.com/shadowmask_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/shadowmask_thumb.webp">
    The Shadow-Driven Opacity Paradox</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="sinkhole">
-   <img  src="testlink.com/sinkhole_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/sinkhole_thumb.webp">
    Flat-Surface 3D Sinkhole with Character & Physics Simulation</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="islandpipeline">
-   <img  src="testlink.com/islandpipeline_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/islandpipeline_thumb.webp">
    Nordic Island Creation Pipeline</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="globalillumination">
-   <img  src="testlink.com/globalillumination_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/globalillumination_thumb.webp">
    Ultra-Lightweight Dynamic Global Illumination (0.2ms)</a>
    </li>
       <li class="list-group-item">
    <a class="thumblink" href="niagaraswarms">
-   <img  src="testlink.com/niagaraanimals_thumb.webp">
+   <img  src="https://media.leandrolaenen.com/niagaraanimals_thumb.webp">
    100K GPU Frogs: High-Performance Niagara Ambient Swarms</a>
    </li>
        </ul>
