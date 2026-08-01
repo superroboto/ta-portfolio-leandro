@@ -43,7 +43,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 
-	<title>Flat-Surface 3D Sinkhole with Character & Physics Simulation | Leandro Laenen</title>
+	<title>Shadow Monster: Dynamic 2D Projection and Traversal | Leandro Laenen</title>
 </head>
 <body>
 	<header>
@@ -72,53 +72,69 @@
 	</header>
 <main><main class="standard-page-container project-container" style="margin-top: 20px;">
 
-   <h1 class="project-title-text"><b>Flat-Surface 3D Sinkhole with Character & Physics Simulation</b></h1>
+   <h1 class="project-title-text"><b>Shadow Monster: Dynamic 2D Projection and Traversal</b></h1>
 
-    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Demo showing a player falling into the sinkhole in a game environment and a test environment.'><source src='https://media.leandrolaenen.com/sinkhole_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
-A dynamic 3D sinkhole rendered as a completely flat 2D plane, featuring rigid-body simulation for fracturing and ragdoll physics. 
+    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Demo showing the shadow monster in a game environment and traversing a testing environment.'><source src='https://media.leandrolaenen.com/wallmonster_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
+A 3D character rendered as a 2D shadow entity with a dynamic wall-navigation system. It can navigate any wall that is large enough. If players venture too close, the monster transitions its limbs into 3D space to kill the player.
 </p>
 
+<h2>2D Shadow Projection</h2>
 <p>
-The system utilizes a true 3D mesh. To keep performance cost extremely cheap, no Custom Depth, stencil masks, or other post-process tricks are used. Instead, the effect is achieved entirely within the hole and character materials using vertex offsets and an opaque masked surface. 
-</p>
-
-<h2>Breaking the illusion</h2>
-
-<p>The video below demonstrates how the sinkhole and everything in it is rendered as if it were a completely flat plane.</p>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Showing that the sinkhole is 2d by hiding the floor and looking under the 2d plane.'><source src='https://media.leandrolaenen.com/sinkhole_2d.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
-<h2>Designed to Work Anywhere</h2>
+The system utilizes an orthographic <i>SceneCaptureComponent2D</i> that renders only the monster's skeletal mesh and a custom Niagara trail system.
 <p>
-A primary engineering goal was ensuring this system could be dynamically deployed in any game environment without requiring destructive workflow modifications.
+This Render Target Texture is then projected onto the environment using a decal material.
 </p>
-<h3>Zero Terrain Reliance</h3>
+
+<h2>2D to 3D Transition</h2>
 <p>
-It can be spawned anywhere in the world without requiring runtime geometry fracturing or changes to the underlying landscape.
+To achieve the horror effect where the creature reaches out of the wall into 3D space:
 </p>
-<h3>Precision Spawning</h3>
+<ul>
+<li>The system maintains a synchronized 3D duplicate skeletal mesh.</li>
+
+<li>A custom material mask keeps the 3D geometry completely invisible behind the wall's surface plane.</li>
+
+<li>As limbs break through the plane threshold, they become visible in 3D space, creating a seamless 2D-to-3D transition.</li>
+</ul>
+<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='The shadow monster reaches out of the wall to kill players when they are close.'><source src='https://media.leandrolaenen.com/wallmonster_kill.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<h2>Wall Traversal</h2>
 <p>
-The sinkhole system automatically spawns a mere 0.1cm above the existing surface mesh.
+A custom wall traversal system allows this monster to be spawned on any flat wall and move along it's length, trying its best to reach nearby players.
 </p>
-<h3>Vertical Isolation</h3>
 <p>
-Because it is entirely self-contained, it can be deployed on the second floor of a building while players on the floor directly beneath see absolutely nothing abnormal.
+It can jump across gaps, jump onto/over obstacles, and supports uneven terrain. This is done using traces which are done every 0.05sec, unlike the movement itself which updates on tick to remain perfectly smooth.
 </p>
+<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Visualizing the movement traces.'><source src='https://media.leandrolaenen.com/wallmonster_traces.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<h2>Optimization & Performance</h2>
+<p>
+When standing directly in front of the monster, the average render target capture time at 60 FPS is 0.05ms (0.15ms every 3 frames) tested on a Radeon RX 5700.
+</p>
+<p>
+Because SceneCapture2D components can quickly become performance bottlenecks in Unreal Engine, this feature was built with aggressive optimization:
+</p>
+<h3>Stripped Rendering</h3>
+<p>
+The Scene Capture is limited to BaseColor and Opacity, bypassing expensive lighting, shadow casting, and post-processing passes.
+</p>
+<h3>Stylized Stop-Motion</h3>
+<p>
+The capture rate is limited to 20 FPS. This reduces CPU/GPU capture overhead while intentionally introducing a creepy feel that enhances the monster's otherworldly movement.
+</p>
+<h3>Distance-Based Resolution Scaling</h3>
+<p>
+The capture resolution scales down as the player moves further away, heavily reducing SceneCapture2D cost on distant entities.
+</p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/wallmonster_resolutionscaling.webp' alt='Monster resolution scaling at different distances.'></p>
+<h3>Frustum & Occlusion Culling</h3>
+<p>
+When the creature is outside the player's view frustum or completely occluded behind geometry:
+</p>
+<ul>
+<li>Render capture is entirely frozen to eliminate unnecessary overhead.</li>
 
-<h2>1. Seamless Blending</h2>
-<p>Upon initial spawning, the system captures a one-time, top-down orthographic projection of the ground context and writes it immediately to a dynamic Render Target.</p>
-
-<h2>2. Setting Up the Cover Mesh</h2>
-<p>This captured environment texture is projected onto a pre-fractured "ground" surface cover mesh. This creates a flawless visual match with the surrounding world materials right before the collapse sequence triggers.</p>
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/sinkhole_fracturedmesh.webp' alt='The pre-fractured sinkhole lid mesh.'></p>
-<h2>3. Progression of the Fracture</h2>
-<p>When triggered, the pre-fractured cover mesh collapses, a niagara system creates small falling debris and a separate collision channel is used on the characters, allowing players to dynamically fall into this "fake" hole.</p>
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/sinkhole_fractureprogression.webp' alt='The progression of the sinkhole fracture and rigid body simulation.'></p>
-<h2>Material Functions & Viewmodes</h2>
-
-<p>The entire system is built around a tightly managed set of material functions mapping masks, vertex translations, and texture captures seamlessly together.</p>
-
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/sinkhole_materialfunctions.webp' alt='Vertex offset function and masking function in the material graph.'></p>
-<p>Below you can see the system in different viewmodes.</p>
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/sinkhole_viewmodes.webp' alt='The sinkhole viewed in different viewmodes.'></p></main>
+<li>Movement logic continues to evaluate in the background.</li>
+</ul>
+<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Visualizing the monsters behavior when outside the players view.'><source src='https://media.leandrolaenen.com/wallmonster_culling.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt=''><source src='https://media.leandrolaenen.com/wallmonster_turntable.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center;margin-top:-20px;'><i>Monster 3D skeletal mesh turntable.</i></p></main>
 
 
 </section>

@@ -4,7 +4,7 @@
 
     <!-- DISABLE PAGE CACHING -->
    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <!-- Backwards compatibility for HTTP 1.0 (older browsers) -->
+  <!-- Backwards compatibility for HTTP 1.0 -->
   <meta http-equiv="Pragma" content="no-cache">
   <!-- Sets expiration date to past, forcing a fresh download -->
   <meta http-equiv="Expires" content="0">
@@ -81,11 +81,14 @@ This project goes over how I made a highly optimized, scalable ambient wildlife 
 <h2>Swarm Breakdown</h2>
 <p>The system manages three distinct animal behaviors</p>
 
-<p><b>Frogs (GPU):</b> Driven via a custom Niagara module for jumping behavior. Poses blend smoothly between idle and jumping states using the vertex shader.</p>
+<h3>Frogs (GPU)</h3>
+<p>Driven via a custom Niagara module for jumping behavior. Poses blend smoothly between idle and jumping states using the vertex shader.</p>
 
-<p><b>Rats (GPU):</b> Programmed to scurry dynamically across surfaces using Global Distance Fields while avoiding the player. A custom module calculates angular velocity to procedurally twist the body along its path during tight turns.</p>
+<h3>Rats (GPU)</h3>
+<p>Programmed to scurry dynamically across surfaces using Global Distance Fields while avoiding the player. A custom module calculates angular velocity to procedurally twist the body along its path during tight turns.</p>
 
-<p><b>Fireflies (CPU):</b> Unlike the GPU swarms, the fireflies utilize a CPU system to support light components for environmental illumination (no shadows).</p>
+<h3>Fireflies (CPU)</h3>
+<p>Unlike the GPU swarms, the fireflies utilize a CPU system to support light components for environmental illumination (no shadows).</p>
 <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Stress testing the swarms, 20K frogs at 3.9ms, 20K rats at 1.6ms, 1.3k fireflies at 3.5ms. Tested on Radeon RX 5700.'><source src='https://media.leandrolaenen.com/niagaraanimals_stress.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
 <h2>Optimization & Custom LOD System</h2>
 <p>While originally created for low-density ambient life, I wanted to stress-test the scalability of these systems and address the performance bottlenecks associated with high instance counts (specifically mesh complexity).</p>
@@ -106,13 +109,17 @@ This project goes over how I made a highly optimized, scalable ambient wildlife 
 <h2>Future optimization</h2>
 <p>If the goal was actually massive 10k+ swarms, future iterations of this system would focus on</p>
 
-<p><b>LOD Improvements:</b> Dynamically disabling the frogs' WPO evaluation by swapping materials when instances enter a completely idle state.</p>
+<h3>LOD Improvements</h3>
+<p>Dynamically disabling the frogs' WPO evaluation by swapping materials when instances enter a completely idle state.</p>
 
-<p><b>Shader Cost Reduction:</b> Adding the LOD logic to the Rats and further tweaking the lod levels.</p>
+<h3>Shader Cost Reduction</h3>
+<p>Adding the LOD logic to the Rats and further tweaking the lod levels.</p>
 
-<p><b>Firefly Light Culling:</b> Mitigating CPU costs by restricting light generation to a small percentage of the active swarm, and fading those light components out over distance.</p>
+<h3>Firefly Light Culling</h3>
+<p>Mitigating CPU costs by restricting light generation to a small percentage of the active swarm, and fading those light components out over distance.</p>
 
-<p><b>Overdraw Mitigation:</b> Implementing distance-based opacity fading and culling on the additive firefly glow sprites to minimize pixel overdraw.</p>
+<h3>Overdraw Mitigation</h3>
+<p>Implementing distance-based opacity fading and culling on the additive firefly glow sprites to minimize pixel overdraw.</p>
 </main>
 
 
@@ -147,6 +154,11 @@ This project goes over how I made a highly optimized, scalable ambient wildlife 
    <a class="thumblink" href="niagaraswarms">
    <img  src="https://media.leandrolaenen.com/niagaraanimals_thumb.webp" alt="" loading="lazy">
    100K GPU Frogs: High-Performance Niagara Ambient Swarms</a>
+   </li>
+      <li class="list-group-item">
+   <a class="thumblink" href="shadowmonster">
+   <img  src="https://media.leandrolaenen.com/wallmonster_thumb.webp" alt="" loading="lazy">
+   Shadow Monster: Dynamic 2D Projection and Traversal</a>
    </li>
        </ul>
 </div>

@@ -4,7 +4,7 @@
 
     <!-- DISABLE PAGE CACHING -->
    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <!-- Backwards compatibility for HTTP 1.0 (older browsers) -->
+  <!-- Backwards compatibility for HTTP 1.0 -->
   <meta http-equiv="Pragma" content="no-cache">
   <!-- Sets expiration date to past, forcing a fresh download -->
   <meta http-equiv="Expires" content="0">
@@ -90,28 +90,35 @@ To fix this, I modernized a classic lighting "cheat" using automated, invisible 
 
 <p>To make an "invisible light" system work in a modern engine like UE5, I had to strip away the overhead and artifacts typically associated with light actors.</p>
 
-<p><b>Stripped Rendering:</b> The GI lights have shadow casting disabled, do not contribute to specular reflections, and are excluded from volumetric fog.</p>
+<h3>Stripped Rendering</h3>
+<p>The GI lights have shadow casting disabled, do not contribute to specular reflections, and are excluded from volumetric fog.</p>
 
-<p><b>Lighting Channels for Actor Isolation:</b> A common issue with floating proxy lights is that moving characters get unrealistically illuminated when passing through them. I solved this by using Lighting Channels. The GI system illuminates the environment geometry while leaving players and enemies completely untouched.</p>
+<h3>Lighting Channels for Actor Isolation</h3>
+<p>A common issue with floating proxy lights is that moving characters get unrealistically illuminated when passing through them. I solved this by using Lighting Channels. The GI system illuminates the environment geometry while leaving players and enemies completely untouched.</p>
 
 <p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/globalillumination_lightingfix.webp' alt='Comparison with vs without the floating lighting fix.'></p>
 <h2>Fully Dynamic</h2>
 
 <p>The system handles both ambient light source propagation (windows, doorways) and direct floor bounces with minimal setup, requiring only a single actor at each window.</p>
 <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Global illumination 24hr time of day timelapse.'><source src='https://media.leandrolaenen.com/globalillumination_timelapse.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
-<p><b>Directional Floor Bounce Tracing:</b> Floor bounces are achieved by tracing from the window/doorway in the direction of the sun or moon vector, automatically shifting the bounce light to the impact point.</p>
+<h3>Directional Floor Bounce Tracing</h3>
+<p>Floor bounces are achieved by tracing from the window/doorway in the direction of the sun or moon vector, automatically shifting the bounce light to the impact point.</p>
 
-<p><b>Artistic Control:</b> For complete art direction, I created a system allowing you to manually tweak or override the trace paths.</p>
+<h3>Complete Control</h3>
+<p>For complete art direction, I created a system allowing you to manually tweak or override the trace paths.</p>
 
-<p><b>Flashlight Bounce:</b> A dedicated, localized proxy light is attached to the player's flashlight spotlight, simulating instantaneous bounce lighting as the beam sweeps across dark, tight spaces.</p>
+<h3>Flashlight Bounce</h3>
+<p>A dedicated, localized proxy light is attached to the player's flashlight spotlight, simulating instantaneous bounce lighting as the beam sweeps across dark, tight spaces.</p>
 
 <p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/globalillumination_viewport.webp' alt='Viewport view showing the different proxy lights and their placement.'></p>
 <h2>Why Not Lumen?</h2>
 
 <p>While UE5’s Lumen is incredible rendering tech, it was not used for this project due to performance constraints and artistic choices.</p>
-<p><b>Artistic Control:</b> Lumen aims for physical accuracy. This system allows artists to arbitrarily boost, color-tint, or shape the GI contribution per room. This functions similarly to how movie sets use artificial bounce lights, flags, and reflector sheets to meticulously control lighting and mood.</p>
+<h3>Artistic Control</h3>
+<p>Lumen aims for physical accuracy. This system allows artists to arbitrarily boost, color-tint, or shape the GI contribution per room. This functions similarly to how movie sets use artificial bounce lights, flags, and reflector sheets to meticulously control lighting and mood.</p>
 
-<p><b>Performance Overhead:</b> Lumen remains a heavy "Next-Gen" feature. For projects targeting mid-range hardware or high framerates, this approach provides a highly performant alternative.</p>
+<h3>Performance Overhead</h3>
+<p>Lumen remains a heavy "Next-Gen" feature. For projects targeting mid-range hardware or high framerates, this approach provides a highly performant alternative.</p>
 
 
 
@@ -149,6 +156,11 @@ To fix this, I modernized a classic lighting "cheat" using automated, invisible 
    <a class="thumblink" href="niagaraswarms">
    <img  src="https://media.leandrolaenen.com/niagaraanimals_thumb.webp" alt="" loading="lazy">
    100K GPU Frogs: High-Performance Niagara Ambient Swarms</a>
+   </li>
+      <li class="list-group-item">
+   <a class="thumblink" href="shadowmonster">
+   <img  src="https://media.leandrolaenen.com/wallmonster_thumb.webp" alt="" loading="lazy">
+   Shadow Monster: Dynamic 2D Projection and Traversal</a>
    </li>
        </ul>
 </div>

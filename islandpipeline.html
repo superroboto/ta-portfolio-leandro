@@ -4,7 +4,7 @@
 
     <!-- DISABLE PAGE CACHING -->
    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <!-- Backwards compatibility for HTTP 1.0 (older browsers) -->
+  <!-- Backwards compatibility for HTTP 1.0 -->
   <meta http-equiv="Pragma" content="no-cache">
   <!-- Sets expiration date to past, forcing a fresh download -->
   <meta http-equiv="Expires" content="0">
@@ -77,18 +77,19 @@
     <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Nordic island walkthrough demo.'><source src='https://media.leandrolaenen.com/islandpipeline_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
 Using my custom Nordic island creation pipeline, I was able to create, texture, and populate this entire island environment in just 1 hour (excluding prop placement).
 </p>
-<p></p>
 <p>
 I was also responsible for all lighting, the dynamic ocean system, and color grading to establish the final atmospheric mood.
 </p>
 
 <h2>1. Island Mesh Creation</h2>
 <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Island creation timelapse.'><source src='https://media.leandrolaenen.com/islandpipeline_timelapse.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center;margin-top:-20px;'><i>Island creation timelapse</i></p><p>The pipeline starts with a low-fidelity, rapid base sculpt. A custom Blender Geometry Nodes modifier, <b>ConvertToIsland</b>, then handles the heavy lifting, procedurally generating high-frequency rock details, fracture lines, sediment layers, and macro ground variation.</p>
-<ul>
-<li>One Mesh: By generating the island as a single mesh rather than kitbashing separate rock assets, geological layer lines remain perfectly seamless across the island.</li>
+<h3>One Mesh</h3>
+<p>By generating the island as a single mesh rather than kitbashing separate rock assets, geological layer lines remain perfectly seamless across the island.
+</p>
+<h3>Scalability</h3>
+<p>Built with Nanite in mind, though the setup can be baked down and split for traditional LOD systems.
+</p>
 
-<li>Scalability: Built with Nanite in mind, though the setup can be baked down and split for traditional LOD systems.</li>
-</ul>
 <p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/islandpipeline_geometrynodes.webp' alt='Geometry nodes graph.'></p>
 <h2>2. Island Auto-Material</h2>
 
@@ -102,15 +103,20 @@ I was also responsible for all lighting, the dynamic ocean system, and color gra
 <h2>3. PCG and Splines</h2>
 
 <p>Foliage and secondary detail rocks are procedurally populated using PCG graphs driven by simple splines, maximizing runtime performance by spawning smaller assets directly on the GPU.</p>
-<ul>
-<li>Foliage Mask Spline: Explicitly excludes rocks and grass within its volume (ideal for clearing out space for houses, landmarks, and props).</li>
 
-<li>Grass Region Spline: Defines the bounds of the core grass and small rock distribution.</li>
+<h3>Foliage Mask Spline</h3>
+<p>Explicitly excludes rocks and grass within its volume (ideal for clearing out space for houses, landmarks, and props).
+</p>
+<h3>Grass Region Spline</h3>
+<p>Defines the bounds of the core grass and small rock distribution.
+</p>
+<h3>Path Spline</h3>
+<p>Automatically clears out grass instances and blends the underlying landscape material via RVT data.
+</p>
+<h3>Shore Rocks Spline</h3>
+<p>Spawns appropriate rock types along the island's shore.
+</p>
 
-<li>Path Spline: Automatically clears out grass instances and blends the underlying landscape material via RVT data.</li>
-
-<li>Shore Rocks Spline: Spawns appropriate rock types along the island's shore.</li>
-</ul>
 <p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/islandpipeline_pcg.webp' alt='UE5 PCG foliage graph.'></p>
 <h2>4. Final Set Dressing</h2>
 
@@ -150,6 +156,11 @@ I was also responsible for all lighting, the dynamic ocean system, and color gra
    <a class="thumblink" href="niagaraswarms">
    <img  src="https://media.leandrolaenen.com/niagaraanimals_thumb.webp" alt="" loading="lazy">
    100K GPU Frogs: High-Performance Niagara Ambient Swarms</a>
+   </li>
+      <li class="list-group-item">
+   <a class="thumblink" href="shadowmonster">
+   <img  src="https://media.leandrolaenen.com/wallmonster_thumb.webp" alt="" loading="lazy">
+   Shadow Monster: Dynamic 2D Projection and Traversal</a>
    </li>
        </ul>
 </div>

@@ -250,6 +250,8 @@ margin-right: 0px;
 .list-group-item {
 
     background-color: transparent;
+    width: 25%;
+    border: 0px;
 
 }
 
@@ -283,19 +285,25 @@ background-color: var(--primary-background);
 
 .list-group-item img {
 
-    height: 125px;
+    /* height: 125px; */
+
+    height: auto;
 
     border-radius: 10px;
 }
 
 .list-group {
-display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 5px;
+display: flex;
+  /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 5px;*/
   width: 100%;
   max-width: 1200px;
   margin: auto;
-  justify-items: center;
+  /*
+  justify-items: center; */
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
 }
 /* This is the outline for the list of all projects at the bottom of the page
 .list-group-item img:hover {
@@ -309,6 +317,8 @@ display: grid;
 .thumblink {
     color: var(--text-normal-color);
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -336,14 +346,6 @@ display: grid;
     text-decoration-color: var(--primary-color);
 
     text-decoration-thickness: 2px;
-}
-
-.list-group-item {
-
-    width: 240px;
-
-    border: 0px;
-
 }
 
 .reason{
@@ -622,6 +624,32 @@ h2 {
     text-transform: uppercase;
 
     margin-top: 30px;
+/*
+    letter-spacing: 3px;
+*/
+}
+
+h3 {
+
+     /*color: var(--text-h2-color);
+     color: #ada9a9; */
+
+    /*
+    text-decoration: underline;
+
+    text-decoration-color: var(--primary-color);
+    */
+    /* text-decoration-color: #adf5c4;
+
+    text-decoration-thickness: 4px;
+
+    padding-bottom: 5px;
+*/
+    text-transform: uppercase;
+    font-size: 1.3rem;
+
+font-weight: bold;
+    margin-top: 20px;
 /*
     letter-spacing: 3px;
 */
