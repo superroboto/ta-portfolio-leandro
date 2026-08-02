@@ -74,7 +74,7 @@
 
    <h1 class="project-title-text"><b>The Shadow-Driven Opacity Paradox</b></h1>
 
-    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Demo showing the shadow masking system in a game environment and a testing environment.'><source src='https://media.leandrolaenen.com/shadowmask_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
+    <p style='text-align:center'><video muted playsinline loop controls autoplay class='projectmedia' style='border-radius:10px' width=640 alt='Demo showing the shadow masking system in a game environment and a testing environment.'><source src='https://media.leandrolaenen.com/shadowmask_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
 Making a character invisible in the shadows sounds like a relatively simple material effect. However, from a rendering pipeline perspective, this presents a fundamental logical paradox. 
 </p>
 <p>
@@ -94,7 +94,7 @@ In a standard deferred rendering pipeline, material properties (like opacity mas
 
 <h2>Render order</h2>
 <p>Geometry → <b>LOCALIZED SHADOW DATA</b> → Material/Opacity Mask → Lighting & Shadows.</p>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Showing different shadow masking features. Masked material shadows, moving shadow casters, moving light sources.'><source src='https://media.leandrolaenen.com/shadowmask_features.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<p style='text-align:center'><video muted playsinline loop controls class='projectmedia' style='border-radius:10px' width=640 alt='Showing different shadow masking features. Masked material shadows, moving shadow casters, moving light sources.'><source src='https://media.leandrolaenen.com/shadowmask_features.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
 <p>
 <h2>The Solution</h2>
 To bypass this limitation without killing performance, I decoupled the character’s visibility from the main shadow pass using a <b>localized, lightweight depth-testing system.</b>
@@ -108,7 +108,7 @@ For every light source hitting the character, the system generates a 64x64 depth
 <p>
 Below is the visualization of the real-time depth buffer capture, used to compute the visibility mask. Alongside the active light frustums tracking the character, used to compute the visibility mask.
 </p>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Debugging the light source depth buffer.'><source src='https://media.leandrolaenen.com/shadowmask_depthbuffer.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/shadowmask_lightbounds.webp' alt='Debugging the light source overlap bounds.'></p>
+<p style='text-align:center'><video muted playsinline loop controls class='projectmedia' style='border-radius:10px' width=640 alt='Debugging the light source depth buffer.'><source src='https://media.leandrolaenen.com/shadowmask_depthbuffer.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/shadowmask_lightbounds.webp' alt='Debugging the light source overlap bounds.'></p>
 <h2>Material Graph Architecture</h2>
 <p>The logic is split across two core functions within the material pipeline to handle coordinate projection, depth evaluation, and custom multi-sample blurring.</p>
 <p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/shadowmask_material_1.webp' alt='Material graph - 1. Sampling the depth buffer and doing a depth test'></p><p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/shadowmask_material_2.webp' alt='Material graph - 2. Sampling shadows and calculating light falloff'></p><h2>Performance</h2>

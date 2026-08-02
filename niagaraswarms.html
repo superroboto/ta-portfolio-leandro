@@ -74,7 +74,7 @@
 
    <h1 class="project-title-text"><b>100K GPU Frogs: High-Performance Niagara Ambient Swarms</b></h1>
 
-    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Demo of the rats, frogs and fireflies in a game environment.'><source src='https://media.leandrolaenen.com/niagaraanimals_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
+    <p style='text-align:center'><video muted playsinline loop controls autoplay class='projectmedia' style='border-radius:10px' width=640 alt='Demo of the rats, frogs and fireflies in a game environment.'><source src='https://media.leandrolaenen.com/niagaraanimals_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
 This project goes over how I made a highly optimized, scalable ambient wildlife system using GPU Niagara systems and material-driven WPO vertex animation. By shifting the animation from skeletal meshes to simple vertex shaders, the system handles massive entity counts at minimal cost.
 </p>
 
@@ -89,13 +89,13 @@ This project goes over how I made a highly optimized, scalable ambient wildlife 
 
 <h3>Fireflies (CPU)</h3>
 <p>Unlike the GPU swarms, the fireflies utilize a CPU system to support light components for environmental illumination (no shadows).</p>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Stress testing the swarms, 20K frogs at 3.9ms, 20K rats at 1.6ms, 1.3k fireflies at 3.5ms. Tested on Radeon RX 5700.'><source src='https://media.leandrolaenen.com/niagaraanimals_stress.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<p style='text-align:center'><video muted playsinline loop controls class='projectmedia' style='border-radius:10px' width=640 alt='Stress testing the swarms, 20K frogs at 3.9ms, 20K rats at 1.6ms, 1.3k fireflies at 3.5ms. Tested on Radeon RX 5700.'><source src='https://media.leandrolaenen.com/niagaraanimals_stress.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
 <h2>Optimization & Custom LOD System</h2>
 <p>While originally created for low-density ambient life, I wanted to stress-test the scalability of these systems and address the performance bottlenecks associated with high instance counts (specifically mesh complexity).</p>
 
 <p>To achieve this, I built a per-instance Niagara Level of Detail system to swap instances dynamically based on camera distance.</p>
 
-<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/niagaraanimals_models.webp' alt='The frog (372 triangles) and rat (126 triangles) static meshes.'></p><p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Testing with the custom LOD system, 20K frogs 3.9ms to 1.0ms. 100K frogs at 4.2ms'><source src='https://media.leandrolaenen.com/niagaraanimals_lods.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<p style='text-align:center'><img class='projectmedia' style='border-radius:10px' width=640 src='https://media.leandrolaenen.com/niagaraanimals_models.webp' alt='The frog (372 triangles) and rat (126 triangles) static meshes.'></p><p style='text-align:center'><video muted playsinline loop controls class='projectmedia' style='border-radius:10px' width=640 alt='Testing with the custom LOD system, 20K frogs 3.9ms to 1.0ms. 100K frogs at 4.2ms'><source src='https://media.leandrolaenen.com/niagaraanimals_lods.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
 <h2>Performance Metrics</h2>
 <p>Tested on a mid-range Radeon RX 5700 at 1080p</p>
 

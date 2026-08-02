@@ -74,7 +74,7 @@
 
    <h1 class="project-title-text"><b>Shadow Monster: Dynamic 2D Projection and Traversal</b></h1>
 
-    <p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Demo showing the shadow monster in a game environment and traversing a testing environment.'><source src='https://media.leandrolaenen.com/wallmonster_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
+    <p style='text-align:center'><video muted playsinline loop controls autoplay class='projectmedia' style='border-radius:10px' width=640 alt='Demo showing the shadow monster in a game environment and traversing a testing environment.'><source src='https://media.leandrolaenen.com/wallmonster_demo.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p>
 A 3D character rendered as a 2D shadow entity with a dynamic wall-navigation system. It can navigate any wall that is large enough. If players venture too close, the monster transitions its limbs into 3D space to kill the player.
 </p>
 
@@ -96,7 +96,7 @@ To achieve the horror effect where the creature reaches out of the wall into 3D 
 
 <li>As limbs break through the plane threshold, they become visible in 3D space, creating a seamless 2D-to-3D transition.</li>
 </ul>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='The shadow monster reaches out of the wall to kill players when they are close.'><source src='https://media.leandrolaenen.com/wallmonster_kill.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<p style='text-align:center'><video muted playsinline loop controls class='projectmedia' style='border-radius:10px' width=640 alt='The shadow monster reaches out of the wall to kill players when they are close.'><source src='https://media.leandrolaenen.com/wallmonster_kill.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
 <h2>Wall Traversal</h2>
 <p>
 A custom wall traversal system allows this monster to be spawned on any flat wall and move along it's length, trying its best to reach nearby players.
@@ -104,7 +104,7 @@ A custom wall traversal system allows this monster to be spawned on any flat wal
 <p>
 It can jump across gaps, jump onto/over obstacles, and supports uneven terrain. This is done using traces which are done every 0.05sec, unlike the movement itself which updates on tick to remain perfectly smooth.
 </p>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Visualizing the movement traces.'><source src='https://media.leandrolaenen.com/wallmonster_traces.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
+<p style='text-align:center'><video muted playsinline loop controls class='projectmedia' style='border-radius:10px' width=640 alt='Visualizing the movement traces.'><source src='https://media.leandrolaenen.com/wallmonster_traces.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p>
 <h2>Optimization & Performance</h2>
 <p>
 When standing directly in front of the monster, the average render target capture time at 60 FPS is 0.05ms (0.15ms every 3 frames) tested on a Radeon RX 5700.
@@ -134,7 +134,7 @@ When the creature is outside the player's view frustum or completely occluded be
 
 <li>Movement logic continues to evaluate in the background.</li>
 </ul>
-<p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt='Visualizing the monsters behavior when outside the players view.'><source src='https://media.leandrolaenen.com/wallmonster_culling.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center'><video class='projectmedia' style='border-radius:10px' width=640 controls autoplay alt=''><source src='https://media.leandrolaenen.com/wallmonster_turntable.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center;margin-top:-20px;'><i>Monster 3D skeletal mesh turntable.</i></p></main>
+<p style='text-align:center'><video muted playsinline loop controls class='projectmedia' style='border-radius:10px' width=640 alt='Visualizing the monsters behavior when outside the players view.'><source src='https://media.leandrolaenen.com/wallmonster_culling.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center'><video muted playsinline loop controls class='projectmedia' style='border-radius:10px' width=640 alt=''><source src='https://media.leandrolaenen.com/wallmonster_turntable.mp4' type='video/mp4'>Your browser does not support the video tag.</video></p><p style='text-align:center;margin-top:-20px;'><i>Monster 3D skeletal mesh turntable.</i></p></main>
 
 
 </section>
